@@ -3,6 +3,7 @@ import { exec } from "child_process";
 import { useEffect, useState } from "react";
 import { fetchProcessesWithPorts, ProcessWithPorts } from "./helpers/fetchProcessesWithPorts";
 import { Process } from "./helpers/fetchProcesses";
+import { revealInFinder } from "./helpers/revealInFinder";
 
 export default function ProcessList() {
   const [state, setState] = useState<ProcessWithPorts[]>([]);
@@ -85,6 +86,14 @@ export default function ProcessList() {
                     shortcut={{ key: "r", modifiers: ["cmd"] }}
                     onAction={() => refetch()}
                   />
+                  {process.path && (
+                    <ActionPanel.Item
+                      title="Reveal in Finder"
+                      icon={Icon.Finder}
+                      shortcut={{ key: "r", modifiers: ["cmd", "opt"] }}
+                      onAction={() => process.path && revealInFinder(process.path)}
+                    />
+                  )}
                 </ActionPanel>
               }
             />
