@@ -1,6 +1,6 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
-  "name": "kill-process",
+  "name": "raycast-kill-process",
   "title": "Kill process",
   "description": "Kill process",
   "icon": "icon.png",
