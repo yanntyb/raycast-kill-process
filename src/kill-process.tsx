@@ -1,4 +1,4 @@
-import { ActionPanel, clearSearchBar, Icon, List, showHUD } from "@raycast/api";
+import { ActionPanel, clearSearchBar, Icon, List, popToRoot, showHUD } from "@raycast/api";
 import { exec } from "child_process";
 import { useEffect, useState } from "react";
 import { fetchProcessesWithPorts, ProcessWithPorts } from "./helpers/fetchProcessesWithPorts";
@@ -34,6 +34,7 @@ export default function ProcessList() {
     exec(`kill -9 ${process.id}`);
     setState(state.filter((p) => p.id !== process.id));
     clearSearchBar({ forceScrollToTop: true });
+    popToRoot();
     showHUD(`✅ Killed ${process.name === "-" ? `process ${process.id}` : process.name}`);
   };
 
